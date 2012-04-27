@@ -1,0 +1,298 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1497DFFB154A66B600EAEA1E /* ituneshandler.sh in Resources */ = {isa = PBXBuildFile; fileRef = 1497DFFA154A66B600EAEA1E /* ituneshandler.sh */; };
+		14A0250D15494393001FEE80 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A0250C15494393001FEE80 /* Cocoa.framework */; };
+		14A0251715494393001FEE80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 14A0251515494393001FEE80 /* InfoPlist.strings */; };
+		14A0251915494393001FEE80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A0251815494393001FEE80 /* main.m */; };
+		14A0251D15494393001FEE80 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 14A0251B15494393001FEE80 /* Credits.rtf */; };
+		14A0252015494393001FEE80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A0251F15494393001FEE80 /* AppDelegate.m */; };
+		14A0252315494393001FEE80 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14A0252115494393001FEE80 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1497DFFA154A66B600EAEA1E /* ituneshandler.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ituneshandler.sh; sourceTree = "<group>"; };
+		14A0250815494393001FEE80 /* StatusMenuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatusMenuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A0250C15494393001FEE80 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		14A0250F15494393001FEE80 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		14A0251015494393001FEE80 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		14A0251115494393001FEE80 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		14A0251415494393001FEE80 /* StatusMenuApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StatusMenuApp-Info.plist"; sourceTree = "<group>"; };
+		14A0251615494393001FEE80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		14A0251815494393001FEE80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		14A0251A15494393001FEE80 /* StatusMenuApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StatusMenuApp-Prefix.pch"; sourceTree = "<group>"; };
+		14A0251C15494393001FEE80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		14A0251E15494393001FEE80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		14A0251F15494393001FEE80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		14A0252215494393001FEE80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14A0250515494393001FEE80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14A0250D15494393001FEE80 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14A024FD15494392001FEE80 = {
+			isa = PBXGroup;
+			children = (
+				14A0251215494393001FEE80 /* StatusMenuApp */,
+				14A0250B15494393001FEE80 /* Frameworks */,
+				14A0250915494393001FEE80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		14A0250915494393001FEE80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14A0250815494393001FEE80 /* StatusMenuApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14A0250B15494393001FEE80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14A0250C15494393001FEE80 /* Cocoa.framework */,
+				14A0250E15494393001FEE80 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		14A0250E15494393001FEE80 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14A0250F15494393001FEE80 /* AppKit.framework */,
+				14A0251015494393001FEE80 /* CoreData.framework */,
+				14A0251115494393001FEE80 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		14A0251215494393001FEE80 /* StatusMenuApp */ = {
+			isa = PBXGroup;
+			children = (
+				14A0251E15494393001FEE80 /* AppDelegate.h */,
+				14A0251F15494393001FEE80 /* AppDelegate.m */,
+				14A0252115494393001FEE80 /* MainMenu.xib */,
+				14A0251315494393001FEE80 /* Supporting Files */,
+				1497DFFA154A66B600EAEA1E /* ituneshandler.sh */,
+			);
+			path = StatusMenuApp;
+			sourceTree = "<group>";
+		};
+		14A0251315494393001FEE80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				14A0251415494393001FEE80 /* StatusMenuApp-Info.plist */,
+				14A0251515494393001FEE80 /* InfoPlist.strings */,
+				14A0251815494393001FEE80 /* main.m */,
+				14A0251A15494393001FEE80 /* StatusMenuApp-Prefix.pch */,
+				14A0251B15494393001FEE80 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14A0250715494393001FEE80 /* StatusMenuApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14A0252615494393001FEE80 /* Build configuration list for PBXNativeTarget "StatusMenuApp" */;
+			buildPhases = (
+				14A0250415494393001FEE80 /* Sources */,
+				14A0250515494393001FEE80 /* Frameworks */,
+				14A0250615494393001FEE80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StatusMenuApp;
+			productName = StatusMenuApp;
+			productReference = 14A0250815494393001FEE80 /* StatusMenuApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14A024FF15494392001FEE80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 14A0250215494392001FEE80 /* Build configuration list for PBXProject "StatusMenuApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 14A024FD15494392001FEE80;
+			productRefGroup = 14A0250915494393001FEE80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14A0250715494393001FEE80 /* StatusMenuApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14A0250615494393001FEE80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14A0251715494393001FEE80 /* InfoPlist.strings in Resources */,
+				14A0251D15494393001FEE80 /* Credits.rtf in Resources */,
+				14A0252315494393001FEE80 /* MainMenu.xib in Resources */,
+				1497DFFB154A66B600EAEA1E /* ituneshandler.sh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14A0250415494393001FEE80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14A0251915494393001FEE80 /* main.m in Sources */,
+				14A0252015494393001FEE80 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		14A0251515494393001FEE80 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14A0251615494393001FEE80 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		14A0251B15494393001FEE80 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14A0251C15494393001FEE80 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		14A0252115494393001FEE80 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14A0252215494393001FEE80 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		14A0252415494393001FEE80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		14A0252515494393001FEE80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		14A0252715494393001FEE80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StatusMenuApp/StatusMenuApp-Prefix.pch";
+				INFOPLIST_FILE = "StatusMenuApp/StatusMenuApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		14A0252815494393001FEE80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StatusMenuApp/StatusMenuApp-Prefix.pch";
+				INFOPLIST_FILE = "StatusMenuApp/StatusMenuApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14A0250215494392001FEE80 /* Build configuration list for PBXProject "StatusMenuApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14A0252415494393001FEE80 /* Debug */,
+				14A0252515494393001FEE80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14A0252615494393001FEE80 /* Build configuration list for PBXNativeTarget "StatusMenuApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14A0252715494393001FEE80 /* Debug */,
+				14A0252815494393001FEE80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 14A024FF15494392001FEE80 /* Project object */;
+}
