@@ -22,8 +22,6 @@
 			<string>NSSliderCell</string>
 			<string>NSCustomView</string>
 			<string>NSCustomObject</string>
-			<string>NSView</string>
-			<string>NSWindowTemplate</string>
 			<string>NSTextField</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
@@ -1297,24 +1295,6 @@
 				</array>
 				<string key="NSName">_NSMainMenu</string>
 			</object>
-			<object class="NSWindowTemplate" id="972006081">
-				<int key="NSWindowStyleMask">15</int>
-				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{335, 390}, {480, 360}}</string>
-				<int key="NSWTFlags">1954021376</int>
-				<string key="NSWindowTitle">StatusMenuApp</string>
-				<string key="NSWindowClass">NSWindow</string>
-				<nil key="NSViewClass"/>
-				<object class="NSView" key="NSWindowView" id="439893737">
-					<reference key="NSNextResponder"/>
-					<int key="NSvFlags">256</int>
-					<string key="NSFrameSize">{480, 360}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSNextKeyView"/>
-				</object>
-				<string key="NSScreenRect">{{0, 0}, {1360, 746}}</string>
-				<string key="NSMaxSize">{1e+13, 1e+13}</string>
-			</object>
 			<object class="NSCustomObject" id="976324537">
 				<string key="NSClassName">AppDelegate</string>
 			</object>
@@ -1335,7 +1315,7 @@
 				</array>
 			</object>
 			<object class="NSCustomView" id="372483415">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSTextField" id="2214666">
@@ -1343,7 +1323,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{87, 42}, {278, 17}}</string>
 						<reference key="NSSuperview" ref="372483415"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="585535287"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="333207355">
@@ -1381,7 +1360,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{87, 60}, {278, 17}}</string>
 						<reference key="NSSuperview" ref="372483415"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="2214666"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="258658630">
@@ -1399,8 +1377,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{179, 6}, {185, 21}}</string>
 						<reference key="NSSuperview" ref="372483415"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSSliderCell" key="NSCell" id="657376598">
 							<int key="NSCellFlags">-2080244224</int>
@@ -1430,7 +1406,6 @@
 						</set>
 						<string key="NSFrame">{{5, 5}, {75, 75}}</string>
 						<reference key="NSSuperview" ref="372483415"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="314913015"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSImageCell" key="NSCell" id="638962542">
@@ -1448,7 +1423,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{125, 7}, {48, 19}}</string>
 						<reference key="NSSuperview" ref="372483415"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="954775805"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="103405793">
@@ -1474,7 +1448,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{85, 7}, {37, 19}}</string>
 						<reference key="NSSuperview" ref="372483415"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="810210715"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="126250170">
@@ -1493,8 +1466,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{370, 85}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="501008189"/>
 				<string key="NSClassName">NSView</string>
 			</object>
@@ -2175,14 +2146,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">window</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="972006081"/>
-					</object>
-					<int key="connectionID">532</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">statusMenu</string>
 						<reference key="source" ref="976324537"/>
 						<reference key="destination" ref="404787965"/>
@@ -2730,19 +2693,6 @@
 						<int key="objectID">354</int>
 						<reference key="object" ref="708854459"/>
 						<reference key="parent" ref="698887838"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">371</int>
-						<reference key="object" ref="972006081"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="439893737"/>
-						</array>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">372</int>
-						<reference key="object" ref="439893737"/>
-						<reference key="parent" ref="972006081"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">375</int>
@@ -3379,12 +3329,6 @@
 				<string key="350.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="351.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="354.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<boolean value="YES" key="371.IBNSWindowAutoPositionCentersHorizontal"/>
-				<boolean value="YES" key="371.IBNSWindowAutoPositionCentersVertical"/>
-				<string key="371.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="371.IBWindowTemplateEditedContentRect">{{380, 496}, {480, 360}}</string>
-				<integer value="1" key="371.NSWindowTemplate.visibleAtLaunch"/>
-				<string key="372.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="375.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="376.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="377.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
