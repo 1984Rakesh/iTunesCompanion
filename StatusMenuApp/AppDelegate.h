@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Growl/Growl.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate,GrowlApplicationBridgeDelegate> {
     IBOutlet NSMenu *statusMenu;
     NSStatusItem *statusMenuItem;
     IBOutlet NSView *customMenuItemView;

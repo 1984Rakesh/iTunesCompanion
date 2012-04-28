@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -22,6 +23,8 @@
     [statusMenuItem setMenu:statusMenu];
     
     [[statusMenu itemAtIndex:0] setView:customMenuItemView];
+    
+    [GrowlApplicationBridge setGrowlDelegate:self]; // Setting a Growl delegate is unnecessary unless you need click callbacks. 
 }
 	
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -39,6 +42,13 @@
 - (void) updateTrackInfo:(NSNotification *)notification {
     id object = [notification userInfo];
     NSLog(@"%@",object);
+    [GrowlApplicationBridge notifyWithTitle:@"Application Launched"
+                                description:@"The app launched successfully and displayed this notification"
+                           notificationName:@"testGrowlNotification"
+                                   iconData:nil
+                                   priority:-2 
+                                   isSticky:NO 
+                               clickContext:@"launchNotifyClick"];
 }
 
 - (IBAction)playButtonAction:(id)sender {

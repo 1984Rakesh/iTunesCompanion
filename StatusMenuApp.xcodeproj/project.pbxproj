@@ -14,7 +14,23 @@
 		14A0251D15494393001FEE80 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 14A0251B15494393001FEE80 /* Credits.rtf */; };
 		14A0252015494393001FEE80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A0251F15494393001FEE80 /* AppDelegate.m */; };
 		14A0252315494393001FEE80 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14A0252115494393001FEE80 /* MainMenu.xib */; };
+		18C4AEFA154C481500420990 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C4AEF9154C481500420990 /* Growl.framework */; };
+		18C4AEFD154C48A000420990 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18C4AEF9154C481500420990 /* Growl.framework */; };
+		18C4AF03154C490F00420990 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 18C4AF02154C490F00420990 /* Growl Registration Ticket.growlRegDict */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		18C4AEFC154C489300420990 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				18C4AEFD154C48A000420990 /* Growl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1497DFFA154A66B600EAEA1E /* ituneshandler.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ituneshandler.sh; sourceTree = "<group>"; };
@@ -31,6 +47,8 @@
 		14A0251E15494393001FEE80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		14A0251F15494393001FEE80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		14A0252215494393001FEE80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		18C4AEF9154C481500420990 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		18C4AF02154C490F00420990 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14A0250D15494393001FEE80 /* Cocoa.framework in Frameworks */,
+				18C4AEFA154C481500420990 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +84,7 @@
 		14A0250B15494393001FEE80 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18C4AEF9154C481500420990 /* Growl.framework */,
 				14A0250C15494393001FEE80 /* Cocoa.framework */,
 				14A0250E15494393001FEE80 /* Other Frameworks */,
 			);
@@ -84,6 +104,7 @@
 		14A0251215494393001FEE80 /* StatusMenuApp */ = {
 			isa = PBXGroup;
 			children = (
+				18C4AF02154C490F00420990 /* Growl Registration Ticket.growlRegDict */,
 				14A0251E15494393001FEE80 /* AppDelegate.h */,
 				14A0251F15494393001FEE80 /* AppDelegate.m */,
 				14A0252115494393001FEE80 /* MainMenu.xib */,
@@ -115,6 +136,7 @@
 				14A0250415494393001FEE80 /* Sources */,
 				14A0250515494393001FEE80 /* Frameworks */,
 				14A0250615494393001FEE80 /* Resources */,
+				18C4AEFC154C489300420990 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -159,6 +181,7 @@
 				14A0251D15494393001FEE80 /* Credits.rtf in Resources */,
 				14A0252315494393001FEE80 /* MainMenu.xib in Resources */,
 				1497DFFB154A66B600EAEA1E /* ituneshandler.sh in Resources */,
+				18C4AF03154C490F00420990 /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +275,10 @@
 		14A0252715494393001FEE80 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StatusMenuApp/StatusMenuApp-Prefix.pch";
 				INFOPLIST_FILE = "StatusMenuApp/StatusMenuApp-Info.plist";
@@ -263,6 +290,10 @@
 		14A0252815494393001FEE80 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StatusMenuApp/StatusMenuApp-Prefix.pch";
 				INFOPLIST_FILE = "StatusMenuApp/StatusMenuApp-Info.plist";
