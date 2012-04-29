@@ -3,7 +3,6 @@
 //  StatusMenuApp
 //
 //  Created by Rakesh Patole on 28/04/12.
-//  Copyright (c) 2012 Diaspark. All rights reserved.
 //
 
 #import "iTunesManager.h"
@@ -15,6 +14,7 @@
 - (void) deregisterForDistributedNotificationFromiTunes;
 - (TrackInformation *) executeAppleScript:(NSAppleScript *)script error:(NSError **)error;
 - (TrackInformation *) newTrackInformationWithEventDescription:(NSAppleEventDescriptor *)eventDescriptor;
+- (void) initError:(NSError **)erro fromInfoDict:(NSDictionary *)dict;
 - (void) updateTrackInfo:(NSNotification *)notification;
 
 @end
@@ -72,11 +72,25 @@ static iTunesManager *sharedManager;
 - (TrackInformation *) executeAppleScript:(NSAppleScript *)script error:(NSError **)error {
     NSDictionary *dict = nil;
     NSAppleEventDescriptor *eventDescriptor = [script executeAndReturnError:&dict];
-    return [self newTrackInformationWithEventDescription:eventDescriptor];
+    
+    TrackInformation *trackInfo = nil;
+    
+    if( dict != nil ){
+        [self initError:error fromInfoDict:dict];
+    }
+    else {
+        trackInfo = [self newTrackInformationWithEventDescription:eventDescriptor];
+    }
+    
+    return trackInfo;
 }
 
 - (TrackInformation *) newTrackInformationWithEventDescription:(NSAppleEventDescriptor *)eventDescriptor {
     return nil;
+}
+
+- (void) initError:(NSError **)erro fromInfoDict:(NSDictionary *)dict {
+    
 }
 
 - (void) updateTrackInfo:(NSNotification *)notification {

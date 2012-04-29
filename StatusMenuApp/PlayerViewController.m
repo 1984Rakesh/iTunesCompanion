@@ -3,7 +3,6 @@
 //  StatusMenuApp
 //
 //  Created by Rakesh Patole on 29/04/12.
-//  Copyright (c) 2012 Diaspark. All rights reserved.
 //
 
 #import "PlayerViewController.h"
@@ -38,7 +37,7 @@
 
 - (IBAction)pauseButtonAction:(id)sender {
     NSError *error = nil;
-    TrackInformation *trackInfo = [[iTunesManager sharedManager] play:&error];
+    TrackInformation *trackInfo = [[iTunesManager sharedManager] pause:&error];
     if( error == nil ){
         //Update View;
         NSLog(@"Paused %@",trackInfo);

@@ -3,7 +3,6 @@
 //  StatusMenuApp
 //
 //  Created by Rakesh on 26/04/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

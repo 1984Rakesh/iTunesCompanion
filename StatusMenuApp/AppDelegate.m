@@ -3,7 +3,6 @@
 //  StatusMenuApp
 //
 //  Created by Rakesh on 26/04/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -26,11 +25,5 @@
     
     
 }
-	
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
-}
-
 
 @end
