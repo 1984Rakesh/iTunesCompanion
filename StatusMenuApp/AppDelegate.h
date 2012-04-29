@@ -7,19 +7,17 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <Growl/Growl.h>
+#import "PlayerViewController.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate,GrowlApplicationBridgeDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
     IBOutlet NSMenu *statusMenu;
     NSStatusItem *statusMenuItem;
-    IBOutlet NSView *customMenuItemView;
-    NSAppleScript *iTunesPlayScript;
-    NSAppleScript *iTunesPauseScript;
+   
+    IBOutlet PlayerViewController *playerViewController;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 
-- (IBAction)playButtonAction:(id)sender;
-- (IBAction)pauseButtonAction:(id)sender;
+
 
 @end

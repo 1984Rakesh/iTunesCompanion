@@ -8,12 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-
-
-@interface iTunesManager : NSObject {
-    
+@interface TrackInformation  : NSObject {
 }
 
-- (iTunesManager *) sharedManager;
+@end
+
+@interface iTunesManager : NSObject {
+    NSAppleScript *iTunesPlayScript;
+    NSAppleScript *iTunesPauseScript;
+}
+
++ (iTunesManager *) sharedManager;
+
+- (TrackInformation *) play:(NSError **)error;
+- (TrackInformation *) pause:(NSError **)error;
 
 @end
