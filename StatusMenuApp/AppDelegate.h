@@ -11,7 +11,6 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     IBOutlet NSMenu *statusMenu;
     NSStatusItem *statusMenuItem;
-   
     IBOutlet PlayerViewController *playerViewController;
 }
 

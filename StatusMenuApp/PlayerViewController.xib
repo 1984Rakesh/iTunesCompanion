@@ -102,10 +102,10 @@
 					<object class="NSSlider" id="381168590">
 						<reference key="NSNextResponder" ref="174756192"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{179, 6}, {185, 21}}</string>
+						<string key="NSFrame">{{88, 24}, {264, 21}}</string>
 						<reference key="NSSuperview" ref="174756192"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="695759999"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSSliderCell" key="NSCell" id="105055205">
 							<int key="NSCellFlags">-2080244224</int>
@@ -148,23 +148,67 @@
 						</object>
 						<bool key="NSEditable">YES</bool>
 					</object>
+					<object class="NSButton" id="314489586">
+						<reference key="NSNextResponder" ref="174756192"/>
+						<int key="NSvFlags">268</int>
+						<string key="NSFrame">{{229, 7}, {42, 19}}</string>
+						<reference key="NSSuperview" ref="174756192"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
+						<bool key="NSEnabled">YES</bool>
+						<object class="NSButtonCell" key="NSCell" id="374759220">
+							<int key="NSCellFlags">-2080244224</int>
+							<int key="NSCellFlags2">134217728</int>
+							<string key="NSContents">Next</string>
+							<object class="NSFont" key="NSSupport" id="229021932">
+								<string key="NSName">LucidaGrande</string>
+								<double key="NSSize">12</double>
+								<int key="NSfFlags">16</int>
+							</object>
+							<reference key="NSControlView" ref="314489586"/>
+							<int key="NSButtonFlags">-2038152961</int>
+							<int key="NSButtonFlags2">164</int>
+							<string key="NSAlternateContents"/>
+							<string key="NSKeyEquivalent"/>
+							<int key="NSPeriodicDelay">400</int>
+							<int key="NSPeriodicInterval">75</int>
+						</object>
+					</object>
+					<object class="NSButton" id="250166609">
+						<reference key="NSNextResponder" ref="174756192"/>
+						<int key="NSvFlags">268</int>
+						<string key="NSFrame">{{180, 7}, {41, 19}}</string>
+						<reference key="NSSuperview" ref="174756192"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="314489586"/>
+						<bool key="NSEnabled">YES</bool>
+						<object class="NSButtonCell" key="NSCell" id="499343841">
+							<int key="NSCellFlags">-2080244224</int>
+							<int key="NSCellFlags2">134217728</int>
+							<string key="NSContents">Back</string>
+							<reference key="NSSupport" ref="229021932"/>
+							<reference key="NSControlView" ref="250166609"/>
+							<int key="NSButtonFlags">-2038152961</int>
+							<int key="NSButtonFlags2">164</int>
+							<string key="NSAlternateContents"/>
+							<string key="NSKeyEquivalent"/>
+							<int key="NSPeriodicDelay">400</int>
+							<int key="NSPeriodicInterval">75</int>
+						</object>
+					</object>
 					<object class="NSButton" id="695759999">
 						<reference key="NSNextResponder" ref="174756192"/>
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{125, 7}, {48, 19}}</string>
 						<reference key="NSSuperview" ref="174756192"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="381168590"/>
+						<reference key="NSNextKeyView" ref="250166609"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="309417766">
 							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">134217728</int>
 							<string key="NSContents">Pause</string>
-							<object class="NSFont" key="NSSupport" id="229021932">
-								<string key="NSName">LucidaGrande</string>
-								<double key="NSSize">12</double>
-								<int key="NSfFlags">16</int>
-							</object>
+							<reference key="NSSupport" ref="229021932"/>
 							<reference key="NSControlView" ref="695759999"/>
 							<int key="NSButtonFlags">-2038152961</int>
 							<int key="NSButtonFlags2">164</int>
@@ -180,7 +224,7 @@
 						<string key="NSFrame">{{85, 7}, {37, 19}}</string>
 						<reference key="NSSuperview" ref="174756192"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="695759999"/>
+						<reference key="NSNextKeyView" ref="381168590"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="745414472">
 							<int key="NSCellFlags">-2080244224</int>
@@ -230,6 +274,22 @@
 					</object>
 					<int key="connectionID">20</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">backTrackButtonAction:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="250166609"/>
+					</object>
+					<int key="connectionID">27</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">nextTrackButtonAction:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="314489586"/>
+					</object>
+					<int key="connectionID">28</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -263,10 +323,12 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="943658879"/>
 							<reference ref="934138542"/>
-							<reference ref="381168590"/>
 							<reference ref="695759999"/>
 							<reference ref="362529804"/>
 							<reference ref="658769568"/>
+							<reference ref="250166609"/>
+							<reference ref="381168590"/>
+							<reference ref="314489586"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -348,6 +410,32 @@
 						<reference key="object" ref="885461286"/>
 						<reference key="parent" ref="943658879"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">21</int>
+						<reference key="object" ref="250166609"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="499343841"/>
+						</array>
+						<reference key="parent" ref="174756192"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="314489586"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="374759220"/>
+						</array>
+						<reference key="parent" ref="174756192"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">23</int>
+						<reference key="object" ref="374759220"/>
+						<reference key="parent" ref="314489586"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">24</int>
+						<reference key="object" ref="499343841"/>
+						<reference key="parent" ref="250166609"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -360,6 +448,10 @@
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="21.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="22.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="23.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="24.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -372,7 +464,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">20</int>
+			<int key="maxID">28</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -388,10 +480,20 @@
 					<string key="className">PlayerViewController</string>
 					<string key="superclassName">NSViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="backTrackButtonAction:">id</string>
+						<string key="nextTrackButtonAction:">id</string>
 						<string key="pauseButtonAction:">id</string>
 						<string key="playButtonAction:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="backTrackButtonAction:">
+							<string key="name">backTrackButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="nextTrackButtonAction:">
+							<string key="name">nextTrackButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="pauseButtonAction:">
 							<string key="name">pauseButtonAction:</string>
 							<string key="candidateClassName">id</string>

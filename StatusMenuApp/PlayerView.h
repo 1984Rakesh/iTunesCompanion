@@ -6,7 +6,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "iTunesManager.h"
 
-@interface PlayerView : NSView
+@interface PlayerView : NSView {
+    NSImageView *artWork;
+}
+
+- (void) setPlayerState:(iTunesState)state forTrack:(TrackInformation *)trackInfo;
+- (void) setPlayerPosition:(NSUInteger)newPosition;
 
 @end

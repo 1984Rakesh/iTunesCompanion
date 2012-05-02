@@ -7,21 +7,43 @@
 
 #import "PlayerView.h"
 
+@interface PlayerView()
+
+- (void) updateViewForPlayingState;
+- (void) updateViewForPausedState;
+- (void) updateViewForStopedState;
+
+@end
+
 @implementation PlayerView
 
-- (id)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
+- (void) setPlayerState:(iTunesState)state forTrack:(TrackInformation *)trackInfo {
+    if( state == kPlaying || state == kPause ){
+        
     }
-    
-    return self;
+    else {
+        if( state == kStoped ){
+            
+        }
+    }
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-    // Drawing code here.
+- (void) setPlayerPosition:(NSUInteger)newPosition {
+    
+}
+
+#pragma mark -
+#pragma mark Private
+- (void) updateViewForPlayingState {
+    
+}
+
+- (void) updateViewForPausedState {
+    
+}
+
+- (void) updateViewForStopedState {
+    
 }
 
 @end

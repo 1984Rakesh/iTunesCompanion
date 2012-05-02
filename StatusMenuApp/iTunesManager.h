@@ -6,20 +6,50 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TrackInformation.h"
+#import "AStoObjC.h"
 
-@interface TrackInformation  : NSObject {
-}
+typedef enum _iTunesState {
+    kStoped,
+    kPause,
+    kPlaying
+} iTunesState;
 
-@end
+#define kITunesDidChangeState           @"kITunesDidChangeState"
+#define kiTunesDidChangePlayerPosition  @"kiTunesDidChangePlayerPosition"
+
 
 @interface iTunesManager : NSObject {
+    TrackInformation *currentPlayingTrack;
+    iTunesState playerState;
+    NSTimer *playerPositionTimer;    
+    
+    AStoObjC *convertor;
+    Class iTunes;
+    
+@private
     NSAppleScript *iTunesPlayScript;
     NSAppleScript *iTunesPauseScript;
+    NSAppleScript *iTunesNextTrackScript;
+    NSAppleScript *iTunesBackTrackScript;
+    NSAppleScript *iTunesCurrentTrackProgressScript;
+    NSAppleScript *iTunesCurrentTrackArtworkScript;
+    NSAppleScript *iTunesCurrentTrackInfoScript;
+    NSAppleScript *iTunesPlayerStatusScript;
 }
 
 + (iTunesManager *) sharedManager;
++ (void) startListeningToEventsFromItunes;
++ (void) stopListeningToEventsFromItunes;
 
-- (TrackInformation *) play:(NSError **)error;
-- (TrackInformation *) pause:(NSError **)error;
+- (iTunesState) playerState;
+- (TrackInformation *) currentTrack;
+
+- (BOOL) play:(NSError **)error;
+- (BOOL) pause:(NSError **)error;
+- (BOOL) nextTrack:(NSError **)error;
+- (BOOL) backTrack:(NSError **)error;
+- (BOOL) changePlayerPosition:(NSError **)error;
 
 @end
+

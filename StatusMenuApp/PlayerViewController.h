@@ -9,7 +9,6 @@
 #import <Growl/Growl.h>
 
 #import "PlayerView.h"
-#import "iTunesManager.h"
 
 @interface PlayerViewController : NSViewController<GrowlApplicationBridgeDelegate> {
     
@@ -18,5 +17,7 @@
 
 - (IBAction)playButtonAction:(id)sender;
 - (IBAction)pauseButtonAction:(id)sender;
+- (IBAction)nextTrackButtonAction:(id)sender;
+- (IBAction)backTrackButtonAction:(id)sender;
 
 @end

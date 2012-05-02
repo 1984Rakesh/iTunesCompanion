@@ -18,12 +18,18 @@
     statusMenuItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     [statusMenuItem retain];
     
-    [statusMenuItem setTitle:@"Hello Status"];
+    [statusMenuItem setTitle:@"M"];
     [statusMenuItem setMenu:statusMenu];
     
     [[statusMenu itemAtIndex:0] setView:[playerViewController view]];
-    
-    
+}
+
+- (void) applicationDidFinishLaunching:(NSNotification *)notification {
+    [iTunesManager startListeningToEventsFromItunes];
+}
+
+- (void) applicationWillTerminate:(NSNotification *)notification {
+    [iTunesManager stopListeningToEventsFromItunes];
 }
 
 @end

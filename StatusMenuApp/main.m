@@ -7,8 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <AppleScriptObjC/AppleScriptObjC.h>
 
 int main(int argc, char *argv[])
 {
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    [[NSBundle mainBundle] loadAppleScriptObjectiveCScripts];
+    [pool release];
     return NSApplicationMain(argc, (const char **)argv);
 }
