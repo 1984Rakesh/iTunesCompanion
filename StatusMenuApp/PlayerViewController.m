@@ -9,8 +9,6 @@
 
 @interface PlayerViewController(Private)
 
-- (void) notifyUserWithTrackInformation:(TrackInformation *)trackInformation;
-
 - (void) itunesDidChangeStateNotification:(NSNotification *)notification;
 - (void) itunesDidChangePlayerPositionNotification:(NSNotification *)notification;
 
@@ -81,7 +79,7 @@
 #pragma mark Notification Handler
 - (void) itunesDidChangeStateNotification:(NSNotification *)notification {   
     iTunesState state = [[iTunesManager sharedManager] playerState];
-    TrackInformation *currentTrack = [[iTunesManager sharedManager] currentTrack];
+    iTunesTrack *currentTrack = [[iTunesManager sharedManager] currentTrack];
     
     [(PlayerView *)self.view setPlayerState:state
                                    forTrack:currentTrack];

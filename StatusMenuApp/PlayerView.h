@@ -9,10 +9,12 @@
 #import "iTunesManager.h"
 
 @interface PlayerView : NSView {
-    NSImageView *artWork;
+    IBOutlet NSImageView *artWork;
+    IBOutlet NSTextField *trackName;
+    IBOutlet NSTextField *trackArtist;
 }
 
-- (void) setPlayerState:(iTunesState)state forTrack:(TrackInformation *)trackInfo;
+- (void) setPlayerState:(iTunesState)state forTrack:(iTunesTrack *)trackInfo;
 - (void) setPlayerPosition:(NSUInteger)newPosition;
 
 @end

@@ -9,9 +9,10 @@
 
 @interface iTunesManager(Private)
 
+- (iTunesApplication *) itunesApplication;
+
 - (void) initAppleScripts;
 - (BOOL) executeAppleScript:(NSAppleScript *)script error:(NSError **)error;
-- (TrackInformation *) newTrackInformationWithUserInfo:(NSDictionary *)userInfo;
 - (void) initError:(NSError **)erro fromInfoDict:(NSDictionary *)dict;
 
 - (void) registerForDistributedNotificationFromiTunes;
@@ -22,9 +23,7 @@
 - (void) pauseTimer;
 - (void) resumeTimer;
 
-- (NSImage *) getArtData;
 - (NSString *) iTunesPlayerStatus;
-- (NSDictionary *) currentTrackInfo;
 
 @end
 
@@ -65,6 +64,8 @@ static iTunesManager *sharedManager;
 - (id) init {
     self = [super init];
     if( self != nil ){
+        
+        
         [self initAppleScripts];
         
         //some way so that view and controller can be notified the current state of itunes so that 
@@ -75,17 +76,26 @@ static iTunesManager *sharedManager;
     return self;
 }
 
+- (iTunesApplication *) itunesApplication {
+    if( itunesApplication == nil ){
+        itunesApplication = [[SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"] retain];
+    }
+    return itunesApplication;
+}
+
 - (iTunesState) playerState {
     return playerState;
 }
 
-- (TrackInformation *) currentTrack {
-    return currentPlayingTrack;
+- (iTunesTrack *) currentTrack {
+    return [[self itunesApplication] currentTrack];
 }
 
 - (BOOL) play:(NSError **)error {
-    return [self executeAppleScript:iTunesPlayScript
-                              error:error];
+//    return [self executeAppleScript:iTunesPlayScript
+//                              error:error];
+    [itunesApplication playpause];
+    return YES;
 }
 
 - (BOOL) pause:(NSError **)error {
@@ -118,7 +128,7 @@ static iTunesManager *sharedManager;
     iTunesPlayerStatusScript = [[NSAppleScript alloc] initWithSource:@"tell application \"iTunes\"\nreturn get player state\nend tell"];
     iTunesCurrentTrackInfoScript = [[NSAppleScript alloc] initWithSource:@"tell application \"iTunes\"\nreturn get current track\nend tell"];
     
-    iTunesCurrentTrackArtworkScript = [[NSAppleScript alloc] initWithSource:@"tell application \"iTunes\"\nreturn get data of artwork 1 of current track\nend tell"];
+    iTunesCurrentTrackArtworkScript = [[NSAppleScript alloc] initWithSource:@"tell application \"iTunes\"\nreturn get raw data of artwork 1 of current track\nend tell"];
 }
 
 - (BOOL) executeAppleScript:(NSAppleScript *)script error:(NSError **)error {
@@ -128,13 +138,7 @@ static iTunesManager *sharedManager;
     if( dict != nil ){
         [self initError:error fromInfoDict:dict];
     }
-    return (error == nil);
-}
-
-- (TrackInformation *) newTrackInformationWithUserInfo:(NSDictionary *)userInfo {
-    TrackInformation *trackInfo = [[TrackInformation alloc] initWithInfo:userInfo];
-    
-    return trackInfo;
+    return (*error == nil);
 }
 
 - (void) initError:(NSError **)erro fromInfoDict:(NSDictionary *)dict {
@@ -153,31 +157,10 @@ static iTunesManager *sharedManager;
     
 }
 
-- (NSImage *) getArtData {
-    NSDictionary *dict = nil;
-    NSImage *returnImage = nil;
-    NSAppleEventDescriptor *eventDescriptor = [iTunesPlayerStatusScript executeAndReturnError:&dict];
-    if( dict == nil ){
-//        id data = [eventDescriptor data];
-//        AEDesc * desc = [eventDescriptor aeDesc];
-//        NSLog(@"Data :: %@,",data);
-//        returnImage = [[NSImage alloc] initWithData:data];
-        NSLog(@"Event Desc :: %@",[eventDescriptor stringValue]);
-    }
-    return returnImage;
-}
-
 - (NSString *) iTunesPlayerStatus {
     NSDictionary *dict = nil;
     NSAppleEventDescriptor *eventDescriptor = [iTunesPlayerStatusScript executeAndReturnError:&dict];
     NSLog(@"State :: %@",[eventDescriptor stringValue]);
-    return nil;
-}
-
-
-- (NSDictionary *) currentTrackInfo {
-    NSDictionary *dict = nil;
-    /*NSAppleEventDescriptor *eventDescriptor = */[iTunesCurrentTrackInfoScript executeAndReturnError:&dict];
     return nil;
 }
 
@@ -204,6 +187,10 @@ static iTunesManager *sharedManager;
     NSLog(@"%@",object);
     NSString *state = [object objectForKey:@"Player State"];
     iTunesState newstate = [self stateFromString:state];
+//    if( newstate == kPlaying || newstate == kPause ){
+//        currentPlayingTrack = [self newTrackInformationWithUserInfo:object];
+//        [currentPlayingTrack setArtWork:[self getArtData]];
+//    }
     [self setState:newstate];
 }
 
@@ -238,7 +225,6 @@ static iTunesManager *sharedManager;
     playerState = state;
     NSString *stateMethod = [[self stateMethodsArray] objectAtIndex:state];
     [self performSelector:NSSelectorFromString(stateMethod)];
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:kITunesDidChangeState
                                                         object:nil];
 }
@@ -254,14 +240,11 @@ static iTunesManager *sharedManager;
 - (void) playing {
     NSLog(@"Playing");
     //create timer to check player position
-    //create a current track object
 }
 
 - (void) stopped {
     NSLog(@"stopped");
     //stop timer that was checking player position
-    [currentPlayingTrack release];
-    currentPlayingTrack = nil;
 }
 
 - (void) paused {
@@ -270,45 +253,3 @@ static iTunesManager *sharedManager;
 }
 
 @end
-
-//        
-////        NSError *error = nil;
-//////        NSString *str = [NSString stringWithContentsOfFile:@"iTunes.applescript"
-//////                                                  encoding:NSUTF8StringEncoding
-//////                                                     error:&error];
-////        if( error == nil ){
-//            iTunes = NSClassFromString(@"iTunes");
-//        id obj = [[iTunes alloc] init];
-//            if( iTunes != nil ){
-//                NSLog(@"Return value :: %@",[obj playerStatus]);
-//            }
-////        }
-
-//- (NSArray *)arrayFromDescriptor:(NSAppleEventDescriptor *)descriptor {
-//    NSMutableArray *returnArray = [NSMutableArray array];
-//    int counter, count = [descriptor numberOfItems];
-//    
-//    for (counter = 1; counter <= count; counter++) {
-//        NSAppleEventDescriptor *desc = [descriptor
-//                                        descriptorAtIndex:counter];
-//        if (nil != [desc descriptorAtIndex:1]) {
-//            [returnArray addObject:[self arrayFromDescriptor:desc]];
-//        } else {
-//            NSString *stringValue = [[descriptor
-//                                      descriptorAtIndex:counter] stringValue];
-//            if (nil != stringValue) {
-//                [returnArray addObject:stringValue];
-//            } else {
-//                [returnArray addObject:@""];
-//            }
-//        }
-//    }
-//    return (NSArray *)returnArray;
-//}
-
-
-////        [self iTunesPlayerStatus];
-////        [self setStringState:@"Playing"];
-//        
-
-

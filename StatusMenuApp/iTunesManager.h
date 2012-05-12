@@ -6,8 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TrackInformation.h"
-#import "AStoObjC.h"
+#import "iTunes.h"
 
 typedef enum _iTunesState {
     kStoped,
@@ -20,12 +19,10 @@ typedef enum _iTunesState {
 
 
 @interface iTunesManager : NSObject {
-    TrackInformation *currentPlayingTrack;
     iTunesState playerState;
     NSTimer *playerPositionTimer;    
     
-    AStoObjC *convertor;
-    Class iTunes;
+    iTunesApplication *itunesApplication;
     
 @private
     NSAppleScript *iTunesPlayScript;
@@ -43,13 +40,14 @@ typedef enum _iTunesState {
 + (void) stopListeningToEventsFromItunes;
 
 - (iTunesState) playerState;
-- (TrackInformation *) currentTrack;
+- (iTunesTrack *) currentTrack;
 
 - (BOOL) play:(NSError **)error;
 - (BOOL) pause:(NSError **)error;
 - (BOOL) nextTrack:(NSError **)error;
 - (BOOL) backTrack:(NSError **)error;
 - (BOOL) changePlayerPosition:(NSError **)error;
+
 
 @end
 
