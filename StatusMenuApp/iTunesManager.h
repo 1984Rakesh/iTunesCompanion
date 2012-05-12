@@ -8,18 +8,11 @@
 #import <Foundation/Foundation.h>
 #import "iTunes.h"
 
-typedef enum _iTunesState {
-    kStoped,
-    kPause,
-    kPlaying
-} iTunesState;
-
 #define kITunesDidChangeState           @"kITunesDidChangeState"
 #define kiTunesDidChangePlayerPosition  @"kiTunesDidChangePlayerPosition"
 
 
 @interface iTunesManager : NSObject {
-    iTunesState playerState;
     NSTimer *playerPositionTimer;    
     
     iTunesApplication *itunesApplication;
@@ -29,7 +22,7 @@ typedef enum _iTunesState {
 + (void) startListeningToEventsFromItunes;
 + (void) stopListeningToEventsFromItunes;
 
-- (iTunesState) playerState;
+- (iTunesEPlS) playerState;
 - (iTunesTrack *) currentTrack;
 
 - (void) playpauseTrack;
@@ -40,6 +33,12 @@ typedef enum _iTunesState {
 @end
 
 /**************************************************************************************************/
+
+//typedef enum _iTunesState {
+//    kStoped,
+//    kPause,
+//    kPlaying
+//} iTunesState;
 
 //@private
 //NSAppleScript *iTunesPlayScript;

@@ -31,7 +31,7 @@
                                                      name:kiTunesDidChangePlayerPosition
                                                    object:nil];
         
-        iTunesState state = [[iTunesManager sharedManager] playerState];
+        iTunesEPlS state = [[iTunesManager sharedManager] playerState];
         [(PlayerView *)self.view setPlayerState:state
                                        forTrack:nil];
     }
@@ -57,13 +57,13 @@
 #pragma mark - 
 #pragma mark Notification Handler
 - (void) itunesDidChangeStateNotification:(NSNotification *)notification {   
-    iTunesState state = [[iTunesManager sharedManager] playerState];
+    iTunesEPlS state = [[iTunesManager sharedManager] playerState];
     iTunesTrack *currentTrack = [[iTunesManager sharedManager] currentTrack];
     
     [(PlayerView *)self.view setPlayerState:state
                                    forTrack:currentTrack];
     
-    if( state == kPlaying ){
+    if( state == iTunesEPlSPlaying ){
         [GrowlApplicationBridge notifyWithTitle:@"Application Launched" 
                                     description:@"The app launched successfully and displayed this notification"
                                notificationName:@"testGrowlNotification"

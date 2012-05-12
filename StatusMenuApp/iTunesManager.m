@@ -23,9 +23,9 @@
 
 @interface iTunesManager(State)
 
-- (iTunesState) stateFromString:(NSString *)stateString;
-- (NSString *) stringFromState:(iTunesState)state;
-- (void) setState:(iTunesState)state;
+//- (iTunesEPlS) stateFromString:(NSString *)stateString;
+//- (NSString *) stringFromState:(iTunesEPlS)state;
+- (void) setState:(iTunesEPlS)state;
 - (NSArray *) stateStringsArray;
 - (NSArray *) stateMethodsArray;
 - (void) playing;
@@ -73,8 +73,8 @@ static iTunesManager *sharedManager;
     return itunesApplication;
 }
 
-- (iTunesState) playerState {
-    return playerState;
+- (iTunesEPlS) playerState {
+    return [[self itunesApplication] playerState];
 }
 
 - (iTunesTrack *) currentTrack {
@@ -139,11 +139,7 @@ static iTunesManager *sharedManager;
 }
 
 - (void) iTunesDistributedNotificationHandler:(NSNotification *)notification {
-    id object = [notification userInfo];
-    NSLog(@"%@",object);
-    NSString *state = [object objectForKey:@"Player State"];
-    iTunesState newstate = [self stateFromString:state];
-    [self setState:newstate];
+    [self setState:[self playerState]];
 }
 
 - (void) dealloc {
@@ -156,37 +152,26 @@ static iTunesManager *sharedManager;
 
 @implementation iTunesManager(State)
 
-- (iTunesState) stateFromString:(NSString *)stateString {
-    iTunesState _playerState = (iTunesState)[[self stateStringsArray] indexOfObject:stateString];
-    return _playerState;
-}
-
-- (NSString *) stringFromState:(iTunesState)state {
-    NSArray *stateStringsArray = [self stateStringsArray];
-    
-    NSString *returnState = [stateStringsArray objectAtIndex:kStoped];
-    
-    if( state <= [stateStringsArray count] && (NSInteger)state >= 0 ){
-        returnState = [stateStringsArray objectAtIndex:state];
-    }
-    
-    return returnState;
-}
-
-- (void) setState:(iTunesState)state {
-    playerState = state;
-    NSString *stateMethod = [[self stateMethodsArray] objectAtIndex:state];
-    [self performSelector:NSSelectorFromString(stateMethod)];
+- (void) setState:(iTunesEPlS)state {
+//    NSString *stateMethod = [[self stateMethodsArray] objectAtIndex:state];
+//    [self performSelector:NSSelectorFromString(stateMethod)];
     [[NSNotificationCenter defaultCenter] postNotificationName:kITunesDidChangeState
                                                         object:nil];
 }
 
 - (NSArray *) stateStringsArray {
-    return [NSArray arrayWithObjects:@"Stopped",@"Paused",@"Playing",nil];
+    return nil;// [NSArray arrayWithObjects:@"Stopped",@"Paused",@"Playing",nil];
 }
 
 - (NSArray *) stateMethodsArray {
-    return [NSArray arrayWithObjects:@"stopped",@"paused",@"playing",nil];
+//    enum iTunesEPlS {
+//        iTunesEPlSStopped = 'kPSS',
+//        iTunesEPlSPlaying = 'kPSP',
+//        iTunesEPlSPaused = 'kPSp',
+//        iTunesEPlSFastForwarding = 'kPSF',
+//        iTunesEPlSRewinding = 'kPSR'
+//    };
+    return [NSArray arrayWithObjects:@"stopped",@"playing",@"paused",nil];
 }
 
 - (void) playing {
@@ -225,5 +210,23 @@ static iTunesManager *sharedManager;
 ////    NSLog(@"State :: %@",[eventDescriptor stringValue]);
 //return nil;
 //}
+
+//- (iTunesEPlS) stateFromString:(NSString *)stateString {
+//    iTunesEPlS _playerState = (iTunesEPlS)[[self stateStringsArray] indexOfObject:stateString];
+//    return _playerState;
+//}
+//
+//- (NSString *) stringFromState:(iTunesEPlS)state {
+//    NSArray *stateStringsArray = [self stateStringsArray];
+//    
+//    NSString *returnState = [stateStringsArray objectAtIndex:state];
+//    
+//    if( state <= [stateStringsArray count] && (NSInteger)state >= 0 ){
+//        returnState = [stateStringsArray objectAtIndex:state];
+//    }
+//    
+//    return returnState;
+//}
+
 
 /**************************************************************************************************/

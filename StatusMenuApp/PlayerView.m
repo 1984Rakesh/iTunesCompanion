@@ -17,13 +17,13 @@
 
 @implementation PlayerView
 
-- (void) setPlayerState:(iTunesState)state forTrack:(iTunesTrack *)trackInfo {
-    if( state == kPlaying || state == kPause ){
+- (void) setPlayerState:(iTunesEPlS)state forTrack:(iTunesTrack *)trackInfo {
+    if( state == iTunesEPlSPlaying || state == iTunesEPlSPaused ){
         iTunesArtwork *artWorkImage = [[trackInfo artworks] objectAtIndex:0];
         [artWork setImage:[artWorkImage data]];
     }
     else {
-        if( state == kStoped ){
+        if( state == iTunesEPlSStopped ){
             
         }
     }

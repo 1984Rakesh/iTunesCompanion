@@ -14,7 +14,7 @@
     IBOutlet NSTextField *trackArtist;
 }
 
-- (void) setPlayerState:(iTunesState)state forTrack:(iTunesTrack *)trackInfo;
+- (void) setPlayerState:(iTunesEPlS)state forTrack:(iTunesTrack *)trackInfo;
 - (void) setPlayerPosition:(NSUInteger)newPosition;
 
 @end
