@@ -20,7 +20,12 @@
 - (void) setPlayerState:(iTunesEPlS)state forTrack:(iTunesTrack *)trackInfo {
     if( state == iTunesEPlSPlaying || state == iTunesEPlSPaused ){
         iTunesArtwork *artWorkImage = [[trackInfo artworks] objectAtIndex:0];
-        [artWork setImage:[artWorkImage data]];
+        
+        NSImage *image = [artWorkImage data];
+        if( image != nil && [trackInfo videoKind] == iTunesEVdKNone  ){
+            [artWork setImage:image];
+        }
+        
         NSString *name = [trackInfo name];
         if( name != nil ) {
             [trackName setStringValue:name];

@@ -5,6 +5,8 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
 
-#define FREE_NSOBJ(obj) if(obj!=nil) { [obj release]; obj = nil; }
+#define iTunes_BundleIdentifier         @"com.apple.iTunes"
+
+#define FREE_NSOBJ(obj)                 if(obj!=nil) { [obj release]; obj = nil; }
 
 #endif

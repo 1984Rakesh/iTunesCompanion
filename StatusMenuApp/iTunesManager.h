@@ -14,7 +14,6 @@
 
 @interface iTunesManager : NSObject {
     NSTimer *playerPositionTimer;    
-    
     iTunesApplication *itunesApplication;
 }
 

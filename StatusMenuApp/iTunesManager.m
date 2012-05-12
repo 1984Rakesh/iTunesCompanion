@@ -23,8 +23,6 @@
 
 @interface iTunesManager(State)
 
-//- (iTunesEPlS) stateFromString:(NSString *)stateString;
-//- (NSString *) stringFromState:(iTunesEPlS)state;
 - (void) setState:(iTunesEPlS)state;
 - (NSArray *) stateStringsArray;
 - (NSArray *) stateMethodsArray;
@@ -68,7 +66,7 @@ static iTunesManager *sharedManager;
 
 - (iTunesApplication *) itunesApplication {
     if( itunesApplication == nil ){
-        itunesApplication = [[SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"] retain];
+        itunesApplication = [[SBApplication applicationWithBundleIdentifier:iTunes_BundleIdentifier] retain];
     }
     return itunesApplication;
 }
@@ -144,6 +142,9 @@ static iTunesManager *sharedManager;
 
 - (void) dealloc {
     [self deregisterForDistributedNotificationFromiTunes];
+    
+    FREE_NSOBJ(itunesApplication);
+    FREE_NSOBJ(playerPositionTimer);
     
     [super dealloc];
 }

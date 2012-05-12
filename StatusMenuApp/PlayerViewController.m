@@ -43,10 +43,6 @@
     [[iTunesManager sharedManager] playpauseTrack];
 }
 
-- (IBAction)pauseButtonAction:(id)sender {
-    [[iTunesManager sharedManager] playpauseTrack];
-}
-
 - (IBAction)nextTrackButtonAction:(id)sender {
     [[iTunesManager sharedManager] nextTrack];
 }
@@ -65,8 +61,8 @@
                                    forTrack:currentTrack];
     
     if( state == iTunesEPlSPlaying ){
-        [GrowlApplicationBridge notifyWithTitle:@"Application Launched" 
-                                    description:@"The app launched successfully and displayed this notification"
+        [GrowlApplicationBridge notifyWithTitle:[currentTrack name]
+                                    description:[currentTrack album]
                                notificationName:@"testGrowlNotification"
                                        iconData:nil
                                        priority:0
