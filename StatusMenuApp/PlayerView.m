@@ -21,6 +21,15 @@
     if( state == iTunesEPlSPlaying || state == iTunesEPlSPaused ){
         iTunesArtwork *artWorkImage = [[trackInfo artworks] objectAtIndex:0];
         [artWork setImage:[artWorkImage data]];
+        NSString *name = [trackInfo name];
+        if( name != nil ) {
+            [trackName setStringValue:name];
+        }
+        
+        NSString *album = [trackInfo album];
+        if( album != nil ){
+            [trackArtist setStringValue:album];
+        }
     }
     else {
         if( state == iTunesEPlSStopped ){
