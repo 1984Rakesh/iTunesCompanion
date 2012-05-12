@@ -17,7 +17,6 @@
 		1808AF6C155EA4C000D9DAA1 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808AF6B155EA4C000D9DAA1 /* ScriptingBridge.framework */; };
 		181A53701551381700C4FFA1 /* iTunes.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 181A536F1551381700C4FFA1 /* iTunes.applescript */; };
 		181A537315513DCA00C4FFA1 /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181A537215513DCA00C4FFA1 /* AppleScriptObjC.framework */; };
-		181A537D15514B4200C4FFA1 /* AStoObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A537C15514B4200C4FFA1 /* AStoObjC.m */; };
 		181A537F15514B5B00C4FFA1 /* Automator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181A537E15514B5B00C4FFA1 /* Automator.framework */; };
 		18304E2A154D93420051C4A2 /* iTunesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18304E28154D93420051C4A2 /* iTunesManager.m */; };
 		18304E2E154D93D50051C4A2 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18304E2D154D93D50051C4A2 /* PlayerView.m */; };
@@ -60,8 +59,6 @@
 		1808AF6B155EA4C000D9DAA1 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		181A536F1551381700C4FFA1 /* iTunes.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = iTunes.applescript; sourceTree = "<group>"; };
 		181A537215513DCA00C4FFA1 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
-		181A537B15514B4200C4FFA1 /* AStoObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AStoObjC.h; sourceTree = "<group>"; };
-		181A537C15514B4200C4FFA1 /* AStoObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AStoObjC.m; sourceTree = "<group>"; };
 		181A537E15514B5B00C4FFA1 /* Automator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Automator.framework; path = System/Library/Frameworks/Automator.framework; sourceTree = SDKROOT; };
 		18304E28154D93420051C4A2 /* iTunesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesManager.m; sourceTree = "<group>"; };
 		18304E29154D93420051C4A2 /* iTunesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesManager.h; sourceTree = "<group>"; };
@@ -135,8 +132,6 @@
 			children = (
 				1808AF69155EA3CF00D9DAA1 /* iTunes.h */,
 				18C4AF02154C490F00420990 /* Growl Registration Ticket.growlRegDict */,
-				181A537B15514B4200C4FFA1 /* AStoObjC.h */,
-				181A537C15514B4200C4FFA1 /* AStoObjC.m */,
 				14A0251E15494393001FEE80 /* AppDelegate.h */,
 				14A0251F15494393001FEE80 /* AppDelegate.m */,
 				14A0252115494393001FEE80 /* MainMenu.xib */,
@@ -239,7 +234,6 @@
 				18304E2E154D93D50051C4A2 /* PlayerView.m in Sources */,
 				18304E32154D94070051C4A2 /* PlayerViewController.m in Sources */,
 				181A53701551381700C4FFA1 /* iTunes.applescript in Sources */,
-				181A537D15514B4200C4FFA1 /* AStoObjC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,8 @@
     IBOutlet NSTextField *trackName;
     IBOutlet NSTextField *trackArtist;
     IBOutlet NSButton *playPauseButton;
+    
+    NSImage *placeHolderArtWork;
 }
 
 - (void) setPlayerState:(iTunesEPlS)state forTrack:(iTunesTrack *)trackInfo;

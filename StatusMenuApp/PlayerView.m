@@ -13,6 +13,8 @@
 - (void) updateViewForPausedState;
 - (void) updateViewForStopedState;
 
+- (NSImage *) placeHolderArtWork;
+
 @end
 
 @implementation PlayerView
@@ -22,8 +24,11 @@
         iTunesArtwork *artWorkImage = [[trackInfo artworks] objectAtIndex:0];
         
         NSImage *image = [artWorkImage data];
-        if( image != nil && [trackInfo videoKind] == iTunesEVdKNone  ){
+        if( [trackInfo videoKind] == iTunesEVdKNone  ){
             [artWork setImage:image];
+        }
+        else {
+            [artWork setImage:[self placeHolderArtWork]];
         }
         
         NSString *name = [trackInfo name];
@@ -62,6 +67,13 @@
 
 - (void) updateViewForStopedState {
     
+}
+
+- (NSImage *) placeHolderArtWork {
+    if( placeHolderArtWork == nil ){
+        
+    }
+    return placeHolderArtWork;
 }
 
 @end
