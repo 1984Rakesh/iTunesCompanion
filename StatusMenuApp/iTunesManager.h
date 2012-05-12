@@ -23,16 +23,6 @@ typedef enum _iTunesState {
     NSTimer *playerPositionTimer;    
     
     iTunesApplication *itunesApplication;
-    
-@private
-    NSAppleScript *iTunesPlayScript;
-    NSAppleScript *iTunesPauseScript;
-    NSAppleScript *iTunesNextTrackScript;
-    NSAppleScript *iTunesBackTrackScript;
-    NSAppleScript *iTunesCurrentTrackProgressScript;
-    NSAppleScript *iTunesCurrentTrackArtworkScript;
-    NSAppleScript *iTunesCurrentTrackInfoScript;
-    NSAppleScript *iTunesPlayerStatusScript;
 }
 
 + (iTunesManager *) sharedManager;
@@ -50,4 +40,18 @@ typedef enum _iTunesState {
 
 
 @end
+
+/**************************************************************************************************/
+
+//@private
+//NSAppleScript *iTunesPlayScript;
+//NSAppleScript *iTunesPauseScript;
+//NSAppleScript *iTunesNextTrackScript;
+//NSAppleScript *iTunesBackTrackScript;
+//NSAppleScript *iTunesCurrentTrackProgressScript;
+//NSAppleScript *iTunesCurrentTrackArtworkScript;
+//NSAppleScript *iTunesCurrentTrackInfoScript;
+//NSAppleScript *iTunesPlayerStatusScript;
+
+/**************************************************************************************************/
 
