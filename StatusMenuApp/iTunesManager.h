@@ -32,11 +32,9 @@ typedef enum _iTunesState {
 - (iTunesState) playerState;
 - (iTunesTrack *) currentTrack;
 
-- (BOOL) play:(NSError **)error;
-- (BOOL) pause:(NSError **)error;
-- (BOOL) nextTrack:(NSError **)error;
-- (BOOL) backTrack:(NSError **)error;
-- (BOOL) changePlayerPosition:(NSError **)error;
+- (void) playpauseTrack;
+- (void) nextTrack;
+- (void) backTrack;
 
 
 @end

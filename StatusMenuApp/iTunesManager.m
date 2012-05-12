@@ -81,24 +81,16 @@ static iTunesManager *sharedManager;
     return [[self itunesApplication] currentTrack];
 }
 
-- (BOOL) play:(NSError **)error {
+- (void) playpauseTrack {
     [[self itunesApplication] playpause];
-    return YES;
 }
 
-- (BOOL) pause:(NSError **)error {
-    [[self itunesApplication] playpause];
-    return YES;
-}
-
-- (BOOL) nextTrack:(NSError **)error {
+- (void) nextTrack {
     [[self itunesApplication] nextTrack];
-    return YES;
 }
 
-- (BOOL) backTrack:(NSError **)error {
+- (void) backTrack {
     [[self itunesApplication] backTrack];
-    return YES;
 }
 
 - (BOOL) changePlayerPosition:(NSError **)error {
@@ -107,8 +99,6 @@ static iTunesManager *sharedManager;
 
 #pragma mark -
 #pragma mark Private
-
-
 - (BOOL) executeAppleScript:(NSAppleScript *)script error:(NSError **)error {
     NSDictionary *dict = nil;
     [script executeAndReturnError:&dict];

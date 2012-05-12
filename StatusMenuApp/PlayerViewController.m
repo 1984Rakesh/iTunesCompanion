@@ -39,40 +39,19 @@
 }
 
 - (IBAction)playButtonAction:(id)sender {
-    NSError *error = nil;
-    
-    if( [[iTunesManager sharedManager] play:&error] == YES ){
-    }
-    else {
-        NSLog(@"Error :: %@",[error localizedDescription]);
-    }
+    [[iTunesManager sharedManager] playpauseTrack];
 }
 
 - (IBAction)pauseButtonAction:(id)sender {
-    NSError *error = nil;
-    if( [[iTunesManager sharedManager] pause:&error] == YES ){
-    }
-    else {
-        NSLog(@"Error :: %@",[error localizedDescription]);
-    }
+    [[iTunesManager sharedManager] playpauseTrack];
 }
 
 - (IBAction)nextTrackButtonAction:(id)sender {
-    NSError *error = nil;
-    if( [[iTunesManager sharedManager] nextTrack:&error] == YES ){
-    }
-    else {
-        NSLog(@"Error :: %@",[error localizedDescription]);
-    }
+    [[iTunesManager sharedManager] nextTrack];
 }
 
 - (IBAction)backTrackButtonAction:(id)sender {
-    NSError *error = nil;
-    if( [[iTunesManager sharedManager] backTrack:&error] == YES ){
-    }
-    else {
-        NSLog(@"Error :: %@",[error localizedDescription]);
-    }
+    [[iTunesManager sharedManager] backTrack];
 }
 
 #pragma mark - 
