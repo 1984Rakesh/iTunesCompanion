@@ -63,11 +63,7 @@ static iTunesManager *sharedManager;
 
 - (id) init {
     self = [super init];
-    if( self != nil ){
-        
-        
-        [self initAppleScripts];
-        
+    if( self != nil ){        
         //some way so that view and controller can be notified the current state of itunes so that 
         //the view can be updated accordingly.... also the registeration of the itunes distributed 
         //notificatiom should be done at the start/lunch of the app so that services depending upon
@@ -92,15 +88,13 @@ static iTunesManager *sharedManager;
 }
 
 - (BOOL) play:(NSError **)error {
-//    return [self executeAppleScript:iTunesPlayScript
-//                              error:error];
-    [itunesApplication playpause];
+    [[self itunesApplication] playpause];
     return YES;
 }
 
 - (BOOL) pause:(NSError **)error {
-    return [self executeAppleScript:iTunesPauseScript
-                              error:error];
+    [[self itunesApplication] playpause];
+    return YES;
 }
 
 - (BOOL) nextTrack:(NSError **)error {
