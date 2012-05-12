@@ -32,8 +32,9 @@
                                                    object:nil];
         
         iTunesEPlS state = [[iTunesManager sharedManager] playerState];
+        iTunesTrack *currentTrack = [[iTunesManager sharedManager] currentTrack];
         [(PlayerView *)self.view setPlayerState:state
-                                       forTrack:nil];
+                                       forTrack:currentTrack];
     }
     return self;
 }

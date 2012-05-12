@@ -30,10 +30,13 @@
         if( album != nil ){
             [trackArtist setStringValue:album];
         }
+        
+        if( state == iTunesEPlSPlaying ) [playPauseButton setTitle:@"Pause"];
+        if( state == iTunesEPlSPaused ) [playPauseButton setTitle:@"Play"];
     }
     else {
         if( state == iTunesEPlSStopped ){
-            
+            [playPauseButton setTitle:@"Play"];
         }
     }
 }
