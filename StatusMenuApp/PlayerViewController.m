@@ -60,11 +60,13 @@
     [(PlayerView *)self.view setPlayerState:state
                                    forTrack:currentTrack];
     
+    iTunesArtwork *artWorkImage = [[currentTrack artworks] objectAtIndex:0];
+    
     if( state == iTunesEPlSPlaying ){
         [GrowlApplicationBridge notifyWithTitle:[currentTrack name]
                                     description:[currentTrack album]
                                notificationName:@"testGrowlNotification"
-                                       iconData:nil
+                                       iconData:[artWorkImage rawData]
                                        priority:0
                                        isSticky:NO
                                    clickContext:@"launchNotifyClick"];        

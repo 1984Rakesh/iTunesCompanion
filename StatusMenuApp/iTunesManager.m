@@ -72,11 +72,19 @@ static iTunesManager *sharedManager;
 }
 
 - (iTunesEPlS) playerState {
-    return [[self itunesApplication] playerState];
+    iTunesEPlS playerState = iTunesEPlSStopped;
+    if( [[self itunesApplication] isRunning] == YES ) {
+        playerState = [[self itunesApplication] playerState];
+    }
+    return playerState;
 }
 
 - (iTunesTrack *) currentTrack {
-    return [[self itunesApplication] currentTrack];
+    iTunesTrack *currentTrack = nil;
+    if( [[self itunesApplication] isRunning] == YES ){
+        currentTrack = [[self itunesApplication] currentTrack];
+    }
+    return currentTrack;
 }
 
 - (void) playpauseTrack {
