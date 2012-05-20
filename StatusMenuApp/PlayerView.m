@@ -45,7 +45,7 @@
         
         if( state == iTunesEPlSPlaying ) {
             [playPauseButton setTitle:@"Pause"];
-            [playerProgress setDoubleValue:0];
+            
         }
         if( state == iTunesEPlSPaused ) [playPauseButton setTitle:@"Play"];
         
@@ -54,12 +54,16 @@
     else {
         if( state == iTunesEPlSStopped ){
             [playPauseButton setTitle:@"Play"];
+            [playerProgress setDoubleValue:0];
+            [playerProgress setMaxValue:0];
+            [playerProgress setMinValue:0];
         }
     }
 }
 
 - (void) setPlayerPosition:(NSUInteger)newPosition {
-    [playerProgress setIntValue:newPosition];
+    NSLog(@"New Position :: %d",newPosition);
+    [playerProgress setDoubleValue:newPosition];
 }
 
 #pragma mark -

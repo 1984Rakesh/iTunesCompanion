@@ -144,12 +144,13 @@ static iTunesManager *sharedManager;
     if( playerPositionTimer == nil ){
 //        playerPositionTimer = [NSTimer timerWithTimeInterval:
 
-        playerPositionTimer = [NSTimer scheduledTimerWithTimeInterval:PLAYER_POSITION_UPDATE_TIME_INTERVAL
-                                                               target:self
-                                                             selector:@selector(updateTimer)
-                                                             userInfo:nil
-                                                              repeats:YES];
+        playerPositionTimer = [NSTimer timerWithTimeInterval:PLAYER_POSITION_UPDATE_TIME_INTERVAL
+                                                      target:self
+                                                    selector:@selector(updateTimer)
+                                                    userInfo:nil
+                                                     repeats:YES];
         [playerPositionTimer retain];
+        [[NSRunLoop mainRunLoop] addTimer:playerPositionTimer forMode:NSRunLoopCommonModes];
         [playerPositionTimer fire];
     }
 }
