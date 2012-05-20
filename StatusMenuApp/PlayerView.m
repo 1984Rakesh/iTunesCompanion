@@ -19,6 +19,8 @@
 
 @implementation PlayerView
 
+#define TIME_DISPLAY_FORMAT @"%d:%d"
+
 - (void) setPlayerState:(iTunesEPlS)state forTrack:(iTunesTrack *)trackInfo {
     if( state == iTunesEPlSPlaying || state == iTunesEPlSPaused ){
         iTunesArtwork *artWorkImage = [[trackInfo artworks] objectAtIndex:0];
@@ -62,8 +64,19 @@
 }
 
 - (void) setPlayerPosition:(NSUInteger)newPosition {
-    NSLog(@"New Position :: %d",newPosition);
+    NSLog(@"New Position :: %lu",newPosition);
     [playerProgress setDoubleValue:newPosition];
+    
+    NSInteger duration = [playerProgress maxValue] - newPosition;
+    
+    NSInteger minsElapsed = newPosition / 60;
+    NSInteger secElapsed = newPosition % 60;
+    
+    NSInteger minsRemaining = duration / 60;
+    NSInteger secReamining = duration % 60;
+    
+    [timeElapsed setStringValue:[NSString stringWithFormat:TIME_DISPLAY_FORMAT,minsElapsed,secElapsed]];
+    [timeRemaining setStringValue:[NSString stringWithFormat:TIME_DISPLAY_FORMAT,minsRemaining,secReamining]];
 }
 
 #pragma mark -

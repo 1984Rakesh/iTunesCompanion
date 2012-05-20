@@ -132,6 +132,7 @@ static iTunesManager *sharedManager;
 
 - (void) setPlayerPosition:(NSInteger)newPosition {
     [[self itunesApplication] setPlayerPosition:newPosition];
+    
 }
 
 #pragma mark -

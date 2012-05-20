@@ -14,6 +14,8 @@
     IBOutlet NSTextField *trackArtist;
     IBOutlet NSButton *playPauseButton;
     IBOutlet NSSlider *playerProgress;
+    IBOutlet NSTextField *timeElapsed;
+    IBOutlet NSTextField *timeRemaining;
     
     NSImage *placeHolderArtWork;
 }

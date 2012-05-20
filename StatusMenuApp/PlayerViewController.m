@@ -56,6 +56,7 @@
 
 - (IBAction)changePlayerPositionAction:(id)sender {
     [[iTunesManager sharedManager] setPlayerPosition:[sender intValue]];
+    [(PlayerView *)[self view] setPlayerPosition:[[iTunesManager sharedManager] playerPosition]];
 }
 
 #pragma mark - 

@@ -27,8 +27,6 @@
     [statusMenuItem setTitle:@"iTunes Helper"];
     NSView *view = [playerViewController view];
     [[menu itemAtIndex:0] setView:view];
-    
-   
     [statusMenuItem setTarget:self];
     [statusMenuItem setAction:@selector(statusItemClicked:)];
 }
