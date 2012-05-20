@@ -20,6 +20,7 @@
 		18304E2E154D93D50051C4A2 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18304E2D154D93D50051C4A2 /* PlayerView.m */; };
 		18304E32154D94070051C4A2 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18304E30154D94070051C4A2 /* PlayerViewController.m */; };
 		18304E33154D94070051C4A2 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18304E31154D94070051C4A2 /* PlayerViewController.xib */; };
+		18552E041568D10E00001A79 /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18552E031568D10E00001A79 /* StatusItemView.m */; };
 		18C4AEFA154C481500420990 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C4AEF9154C481500420990 /* Growl.framework */; };
 		18C4AEFD154C48A000420990 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18C4AEF9154C481500420990 /* Growl.framework */; };
 		18C4AF03154C490F00420990 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 18C4AF02154C490F00420990 /* Growl Registration Ticket.growlRegDict */; };
@@ -63,6 +64,8 @@
 		18304E2F154D94070051C4A2 /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
 		18304E30154D94070051C4A2 /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 		18304E31154D94070051C4A2 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		18552E021568D10E00001A79 /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
+		18552E031568D10E00001A79 /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
 		18C4AEF9154C481500420990 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		18C4AF02154C490F00420990 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,11 +130,9 @@
 			isa = PBXGroup;
 			children = (
 				1808AF69155EA3CF00D9DAA1 /* iTunes.h */,
-				18C4AF02154C490F00420990 /* Growl Registration Ticket.growlRegDict */,
 				14A0251E15494393001FEE80 /* AppDelegate.h */,
 				14A0251F15494393001FEE80 /* AppDelegate.m */,
 				14A0252115494393001FEE80 /* MainMenu.xib */,
-				14A0251315494393001FEE80 /* Supporting Files */,
 				18304E28154D93420051C4A2 /* iTunesManager.m */,
 				18304E29154D93420051C4A2 /* iTunesManager.h */,
 				18304E2C154D93D50051C4A2 /* PlayerView.h */,
@@ -139,6 +140,9 @@
 				18304E2F154D94070051C4A2 /* PlayerViewController.h */,
 				18304E30154D94070051C4A2 /* PlayerViewController.m */,
 				18304E31154D94070051C4A2 /* PlayerViewController.xib */,
+				14A0251315494393001FEE80 /* Supporting Files */,
+				18552E021568D10E00001A79 /* StatusItemView.h */,
+				18552E031568D10E00001A79 /* StatusItemView.m */,
 			);
 			path = StatusMenuApp;
 			sourceTree = "<group>";
@@ -146,6 +150,7 @@
 		14A0251315494393001FEE80 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18C4AF02154C490F00420990 /* Growl Registration Ticket.growlRegDict */,
 				14A0251415494393001FEE80 /* StatusMenuApp-Info.plist */,
 				14A0251515494393001FEE80 /* InfoPlist.strings */,
 				14A0251815494393001FEE80 /* main.m */,
@@ -158,9 +163,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		14A0250715494393001FEE80 /* StatusMenuApp */ = {
+		14A0250715494393001FEE80 /* iTunesCompanion */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 14A0252615494393001FEE80 /* Build configuration list for PBXNativeTarget "StatusMenuApp" */;
+			buildConfigurationList = 14A0252615494393001FEE80 /* Build configuration list for PBXNativeTarget "iTunesCompanion" */;
 			buildPhases = (
 				14A0250415494393001FEE80 /* Sources */,
 				14A0250515494393001FEE80 /* Frameworks */,
@@ -171,7 +176,7 @@
 			);
 			dependencies = (
 			);
-			name = StatusMenuApp;
+			name = iTunesCompanion;
 			productName = StatusMenuApp;
 			productReference = 14A0250815494393001FEE80 /* StatusMenuApp.app */;
 			productType = "com.apple.product-type.application";
@@ -196,7 +201,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				14A0250715494393001FEE80 /* StatusMenuApp */,
+				14A0250715494393001FEE80 /* iTunesCompanion */,
 			);
 		};
 /* End PBXProject section */
@@ -226,6 +231,7 @@
 				18304E2A154D93420051C4A2 /* iTunesManager.m in Sources */,
 				18304E2E154D93D50051C4A2 /* PlayerView.m in Sources */,
 				18304E32154D94070051C4A2 /* PlayerViewController.m in Sources */,
+				18552E041568D10E00001A79 /* StatusItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		14A0252615494393001FEE80 /* Build configuration list for PBXNativeTarget "StatusMenuApp" */ = {
+		14A0252615494393001FEE80 /* Build configuration list for PBXNativeTarget "iTunesCompanion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				14A0252715494393001FEE80 /* Debug */,

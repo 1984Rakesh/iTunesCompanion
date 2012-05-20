@@ -40,8 +40,16 @@
             [trackArtist setStringValue:album];
         }
         
-        if( state == iTunesEPlSPlaying ) [playPauseButton setTitle:@"Pause"];
+        [playerProgress setMinValue:0];
+        [playerProgress setMaxValue:[trackInfo duration]];
+        
+        if( state == iTunesEPlSPlaying ) {
+            [playPauseButton setTitle:@"Pause"];
+            [playerProgress setDoubleValue:0];
+        }
         if( state == iTunesEPlSPaused ) [playPauseButton setTitle:@"Play"];
+        
+        
     }
     else {
         if( state == iTunesEPlSStopped ){
@@ -51,7 +59,7 @@
 }
 
 - (void) setPlayerPosition:(NSUInteger)newPosition {
-    
+    [playerProgress setIntValue:newPosition];
 }
 
 #pragma mark -

@@ -30,13 +30,12 @@
                                                  selector:@selector(itunesDidChangePlayerPositionNotification:)
                                                      name:kiTunesDidChangePlayerPosition
                                                    object:nil];
-        
-        iTunesEPlS state = [[iTunesManager sharedManager] playerState];
-        iTunesTrack *currentTrack = [[iTunesManager sharedManager] currentTrack];
-        [(PlayerView *)self.view setPlayerState:state
-                                       forTrack:currentTrack];
     }
     return self;
+}
+
+- (void) loadView {
+    [super loadView];
 }
 
 - (IBAction)playButtonAction:(id)sender {
@@ -49,6 +48,14 @@
 
 - (IBAction)backTrackButtonAction:(id)sender {
     [[iTunesManager sharedManager] backTrack];
+}
+
+- (IBAction)openiTunesButtonAction:(id)sender {
+    [[iTunesManager sharedManager] openiTunes];
+}
+
+- (IBAction)changePlayerPositionAction:(id)sender {
+    [[iTunesManager sharedManager] setPlayerPosition:[sender intValue]];
 }
 
 #pragma mark - 
@@ -74,8 +81,7 @@
 }
 
 - (void) itunesDidChangePlayerPositionNotification:(NSNotification *)notification {
-    NSNumber *playerPosition = [notification object];
-    [(PlayerView *)[self view] setPlayerPosition:[playerPosition intValue]];
+    [(PlayerView *)[self view] setPlayerPosition:[[iTunesManager sharedManager] playerPosition]];
 }
 
 @end

@@ -7,6 +7,12 @@
 
 #import "AppDelegate.h"
 
+@interface AppDelegate()
+
+- (void) statusItemClicked:(id)sender;
+
+@end
+
 
 @implementation AppDelegate
 
@@ -16,12 +22,15 @@
     [super awakeFromNib];
     
     statusMenuItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    [statusMenuItem retain];
+    [statusMenuItem retain]; 
     
-    [statusMenuItem setTitle:@"M"];
-    [statusMenuItem setMenu:statusMenu];
+    [statusMenuItem setTitle:@"iTunes Helper"];
+    NSView *view = [playerViewController view];
+    [[menu itemAtIndex:0] setView:view];
     
-    [[statusMenu itemAtIndex:0] setView:[playerViewController view]];
+   
+    [statusMenuItem setTarget:self];
+    [statusMenuItem setAction:@selector(statusItemClicked:)];
 }
 
 - (void) applicationDidFinishLaunching:(NSNotification *)notification {
@@ -30,6 +39,22 @@
 
 - (void) applicationWillTerminate:(NSNotification *)notification {
     [iTunesManager stopListeningToEventsFromItunes];
+}
+
+#pragma mark - 
+#pragma mark Private
+- (void) statusItemClicked:(id)sender {
+    NSLog(@"Hello");
+     [statusMenuItem popUpStatusItemMenu:menu];
+    
+//    if (self.buttonIsPressed) {
+//        [playerViewPopOver showRelativeToRect:[[statusMenuItem view] bounds]
+//                                       ofView:[statusMenuItem view]
+//                                preferredEdge:NSMaxYEdge];
+    
+//    } else {
+//        [self.popover close];
+//    }
 }
 
 @end

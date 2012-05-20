@@ -23,10 +23,13 @@
 
 - (iTunesEPlS) playerState;
 - (iTunesTrack *) currentTrack;
+- (NSUInteger) playerPosition;
+- (void) openiTunes;
 
 - (void) playpauseTrack;
 - (void) nextTrack;
 - (void) backTrack;
+- (void) setPlayerPosition:(NSInteger)newPosition;
 
 
 @end

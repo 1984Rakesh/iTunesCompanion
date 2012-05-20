@@ -6,6 +6,7 @@
 //
 
 #import "iTunesManager.h"
+#import "iTunes.h"
 
 @interface iTunesManager(Private)
 
@@ -17,23 +18,30 @@
 
 - (void) startTimer;
 - (void) pauseTimer;
-- (void) resumeTimer;
+- (void) stopTimer;
+- (void) updateTimer;
+
+- (void) initState;
 
 @end
 
 @interface iTunesManager(State)
 
 - (void) setState:(iTunesEPlS)state;
-- (NSArray *) stateStringsArray;
-- (NSArray *) stateMethodsArray;
+- (SEL) selForState:(iTunesEPlS)state; 
 - (void) playing;
 - (void) stopped;
 - (void) paused;
+
++ (NSDictionary *)stateMethods;
 
 @end
 
 @implementation iTunesManager
 
+#define PLAYER_POSITION_UPDATE_TIME_INTERVAL            1.0f //sec
+
+static NSDictionary *stateMethods;
 static iTunesManager *sharedManager;
 
 + (iTunesManager *) sharedManager {
@@ -55,11 +63,10 @@ static iTunesManager *sharedManager;
 
 - (id) init {
     self = [super init];
-    if( self != nil ){        
-        //some way so that view and controller can be notified the current state of itunes so that 
-        //the view can be updated accordingly.... also the registeration of the itunes distributed 
-        //notificatiom should be done at the start/lunch of the app so that services depending upon
-        //this feture can work accordingly.
+    if( self != nil ){
+        [self performSelector:@selector(initState)
+                   withObject:nil
+                   afterDelay:0.5f];
     }
     return self;
 }
@@ -87,6 +94,30 @@ static iTunesManager *sharedManager;
     return currentTrack;
 }
 
+- (NSUInteger) playerPosition {
+    NSUInteger playerPosition = 0;
+    if([[self itunesApplication] isRunning] == YES ){
+        playerPosition = [[self itunesApplication] playerPosition];
+    }
+    return playerPosition;
+}
+
+- (void) openiTunes {
+    [[[self itunesApplication] browserWindows] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSLog(@"%@",obj);
+        Class iTunesBrowserWindowClass = NSClassFromString(@"ITunesBrowserWindow");
+        if( [obj isKindOfClass:iTunesBrowserWindowClass] == YES ){
+            [(iTunesBrowserWindow *)obj open];
+            [(iTunesBrowserWindow *)obj reveal];
+            *stop = YES;
+        }
+    }];
+    
+    if( [[self itunesApplication] isRunning] == YES ){
+        [[self currentTrack] reveal];
+    }
+}
+
 - (void) playpauseTrack {
     [[self itunesApplication] playpause];
 }
@@ -99,36 +130,50 @@ static iTunesManager *sharedManager;
     [[self itunesApplication] backTrack];
 }
 
-- (BOOL) changePlayerPosition:(NSError **)error {
-    return NO;
+- (void) setPlayerPosition:(NSInteger)newPosition {
+    [[self itunesApplication] setPlayerPosition:newPosition];
 }
 
 #pragma mark -
 #pragma mark Private
-- (BOOL) executeAppleScript:(NSAppleScript *)script error:(NSError **)error {
-    NSDictionary *dict = nil;
-    [script executeAndReturnError:&dict];
-    NSLog(@"Dict :: %@",dict);
-    if( dict != nil ){
-        [self initError:error fromInfoDict:dict];
-    }
-    return (*error == nil);
-}
-
-- (void) initError:(NSError **)erro fromInfoDict:(NSDictionary *)dict {
-    
+- (void) initState {
+    [self setState:[[self itunesApplication] playerState]];
 }
 
 - (void) startTimer {
-    
+    if( playerPositionTimer == nil ){
+//        playerPositionTimer = [NSTimer timerWithTimeInterval:
+
+        playerPositionTimer = [NSTimer scheduledTimerWithTimeInterval:PLAYER_POSITION_UPDATE_TIME_INTERVAL
+                                                               target:self
+                                                             selector:@selector(updateTimer)
+                                                             userInfo:nil
+                                                              repeats:YES];
+        [playerPositionTimer retain];
+        [playerPositionTimer fire];
+    }
 }
 
 - (void) pauseTimer {
-        
+    [self stopTimer];
 }
 
 - (void) resumeTimer {
-    
+    [self startTimer];
+}
+
+- (void) stopTimer {
+    if( playerPositionTimer != nil ){
+        if( [playerPositionTimer isValid] == YES ){
+            [playerPositionTimer invalidate];
+        }
+        FREE_NSOBJ(playerPositionTimer);
+    }
+}
+
+- (void) updateTimer {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kiTunesDidChangePlayerPosition
+                                                        object:nil];
 }
 
 #pragma mark - 
@@ -164,43 +209,66 @@ static iTunesManager *sharedManager;
 - (void) setState:(iTunesEPlS)state {
 //    NSString *stateMethod = [[self stateMethodsArray] objectAtIndex:state];
 //    [self performSelector:NSSelectorFromString(stateMethod)];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kITunesDidChangeState
-                                                        object:nil];
+    SEL stateMethos = [self selForState:state];
+    if( stateMethods != nil ){
+        [self performSelector:stateMethos];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kITunesDidChangeState
+                                                            object:nil];
+    }
 }
 
-- (NSArray *) stateStringsArray {
-    return nil;// [NSArray arrayWithObjects:@"Stopped",@"Paused",@"Playing",nil];
+- (SEL) selForState:(iTunesEPlS)state {
+    SEL stateMethod = nil;
+    NSString * stateMethodStr = [[[self class] stateMethods] objectForKey:[NSString stringWithFormat:@"%c",state]];
+    stateMethod = NSSelectorFromString(stateMethodStr);
+    return stateMethod;
 }
 
-- (NSArray *) stateMethodsArray {
-//    enum iTunesEPlS {
-//        iTunesEPlSStopped = 'kPSS',
-//        iTunesEPlSPlaying = 'kPSP',
-//        iTunesEPlSPaused = 'kPSp',
-//        iTunesEPlSFastForwarding = 'kPSF',
-//        iTunesEPlSRewinding = 'kPSR'
-//    };
-    return [NSArray arrayWithObjects:@"stopped",@"playing",@"paused",nil];
++ (NSDictionary *)stateMethods {
+    if( stateMethods == nil ){
+        NSArray * objects = [NSArray arrayWithObjects:NSStringFromSelector(@selector(playing)),
+                             NSStringFromSelector(@selector(stopped)),
+                             NSStringFromSelector(@selector(paused)),nil];
+        NSArray * keys = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%c",iTunesEPlSPlaying],
+                          [NSString stringWithFormat:@"%c",iTunesEPlSStopped],
+                          [NSString stringWithFormat:@"%c",iTunesEPlSPaused],
+                          nil];
+        stateMethods = [[NSDictionary alloc] initWithObjects:objects
+                                                     forKeys:keys];
+    }
+    return stateMethods;
 }
+
+
 
 - (void) playing {
-    NSLog(@"Playing");
-    //create timer to check player position
+    [self startTimer];
 }
 
 - (void) stopped {
-    NSLog(@"stopped");
-    //stop timer that was checking player position
+    [self stopTimer];
 }
 
 - (void) paused {
-    //Pause timer that is checking player position
-    NSLog(@"Paused");
+    [self pauseTimer];
 }
 
 @end
 
 /**************************************************************************************************/
+//- (BOOL) executeAppleScript:(NSAppleScript *)script error:(NSError **)error {
+//    NSDictionary *dict = nil;
+//    [script executeAndReturnError:&dict];
+//    NSLog(@"Dict :: %@",dict);
+//    if( dict != nil ){
+//        [self initError:error fromInfoDict:dict];
+//    }
+//    return (*error == nil);
+//}
+//
+//- (void) initError:(NSError **)erro fromInfoDict:(NSDictionary *)dict {
+//    
+//}
 //- (void) initAppleScripts {
 //iTunesPlayScript = [[NSAppleScript alloc] initWithSource:@"tell application \"iTunes\"\nplay\nend tell"];
 //iTunesPauseScript = [[NSAppleScript alloc] initWithSource:@"tell application \"iTunes\"\npause\nend tell"]; 
@@ -235,6 +303,21 @@ static iTunesManager *sharedManager;
 //    }
 //    
 //    return returnState;
+//}
+
+//- (NSArray *) stateStringsArray {
+//    return nil;// [NSArray arrayWithObjects:@"Stopped",@"Paused",@"Playing",nil];
+//}
+//
+//- (NSArray *) stateMethodsArray {
+////    enum iTunesEPlS {
+////        iTunesEPlSStopped = 'kPSS',
+////        iTunesEPlSPlaying = 'kPSP',
+////        iTunesEPlSPaused = 'kPSp',
+////        iTunesEPlSFastForwarding = 'kPSF',
+////        iTunesEPlSRewinding = 'kPSR'
+////    };
+//    return [NSArray arrayWithObjects:@"stopped",@"playing",@"paused",nil];
 //}
 
 

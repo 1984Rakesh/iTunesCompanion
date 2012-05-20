@@ -7,11 +7,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PlayerViewController.h"
+#import "StatusItemView.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
-    IBOutlet NSMenu *statusMenu;
+@interface AppDelegate : NSObject <NSApplicationDelegate,NSMenuDelegate> {
     NSStatusItem *statusMenuItem;
     IBOutlet PlayerViewController *playerViewController;
+    IBOutlet NSPopover *playerViewPopOver;
+    IBOutlet StatusItemView *statusMenuItemView;
+    IBOutlet NSMenu *menu;
 }
 
 @property (assign) IBOutlet NSWindow *window;

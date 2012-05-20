@@ -13,6 +13,7 @@
     IBOutlet NSTextField *trackName;
     IBOutlet NSTextField *trackArtist;
     IBOutlet NSButton *playPauseButton;
+    IBOutlet NSSlider *playerProgress;
     
     NSImage *placeHolderArtWork;
 }
