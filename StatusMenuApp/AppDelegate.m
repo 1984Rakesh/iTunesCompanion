@@ -42,17 +42,7 @@
 #pragma mark - 
 #pragma mark Private
 - (void) statusItemClicked:(id)sender {
-    NSLog(@"Hello");
      [statusMenuItem popUpStatusItemMenu:menu];
-    
-//    if (self.buttonIsPressed) {
-//        [playerViewPopOver showRelativeToRect:[[statusMenuItem view] bounds]
-//                                       ofView:[statusMenuItem view]
-//                                preferredEdge:NSMaxYEdge];
-    
-//    } else {
-//        [self.popover close];
-//    }
 }
 
 @end

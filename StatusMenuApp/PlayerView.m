@@ -9,17 +9,14 @@
 
 @interface PlayerView()
 
-- (void) updateViewForPlayingState;
-- (void) updateViewForPausedState;
-- (void) updateViewForStopedState;
-
 - (NSImage *) placeHolderArtWork;
+- (void) setTime:(NSInteger)time toLable:(NSTextField *)textField;
 
 @end
 
 @implementation PlayerView
 
-#define TIME_DISPLAY_FORMAT @"%d:%d"
+#define TIME_DISPLAY_FORMAT @"%d:%02d"
 
 - (void) setPlayerState:(iTunesEPlS)state forTrack:(iTunesTrack *)trackInfo {
     if( state == iTunesEPlSPlaying || state == iTunesEPlSPaused ){
@@ -59,6 +56,9 @@
             [playerProgress setDoubleValue:0];
             [playerProgress setMaxValue:0];
             [playerProgress setMinValue:0];
+            
+            [timeRemaining setStringValue:@""];
+            [timeElapsed setStringValue:@""];
         }
     }
 }
@@ -67,30 +67,18 @@
     NSLog(@"New Position :: %lu",newPosition);
     [playerProgress setDoubleValue:newPosition];
     
-    NSInteger duration = [playerProgress maxValue] - newPosition;
+    NSInteger duration = newPosition - [playerProgress maxValue];
     
-    NSInteger minsElapsed = newPosition / 60;
-    NSInteger secElapsed = newPosition % 60;
-    
-    NSInteger minsRemaining = duration / 60;
-    NSInteger secReamining = duration % 60;
-    
-    [timeElapsed setStringValue:[NSString stringWithFormat:TIME_DISPLAY_FORMAT,minsElapsed,secElapsed]];
-    [timeRemaining setStringValue:[NSString stringWithFormat:TIME_DISPLAY_FORMAT,minsRemaining,secReamining]];
+    [self setTime:newPosition toLable:timeElapsed];
+    [self setTime:duration toLable:timeRemaining];
 }
 
 #pragma mark -
 #pragma mark Private
-- (void) updateViewForPlayingState {
-    
-}
-
-- (void) updateViewForPausedState {
-    
-}
-
-- (void) updateViewForStopedState {
-    
+- (void) setTime:(NSInteger)time toLable:(NSTextField *)textField {
+    NSInteger minsRemaining = time / 60;
+    NSInteger secReamining = abs(time % 60);
+    [textField setStringValue:[NSString stringWithFormat:TIME_DISPLAY_FORMAT,minsRemaining,secReamining]];
 }
 
 - (NSImage *) placeHolderArtWork {
