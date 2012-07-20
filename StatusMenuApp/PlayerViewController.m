@@ -34,10 +34,6 @@
     return self;
 }
 
-- (void) loadView {
-    [super loadView];
-}
-
 - (IBAction)playButtonAction:(id)sender {
     [[iTunesManager sharedManager] playpauseTrack];
 }
