@@ -46,9 +46,7 @@
             [playPauseButton setTitle:@"Pause"];
             
         }
-        if( state == iTunesEPlSPaused ) [playPauseButton setTitle:@"Play"];
-        
-        
+        if( state == iTunesEPlSPaused ) [playPauseButton setTitle:@"Play"];        
     }
     else {
         if( state == iTunesEPlSStopped ){

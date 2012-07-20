@@ -65,6 +65,7 @@
                                    forTrack:currentTrack];
     
     iTunesArtwork *artWorkImage = [[currentTrack artworks] objectAtIndex:0];
+    [(PlayerView *)[self view] setPlayerPosition:[[iTunesManager sharedManager] playerPosition]];
     
     if( state == iTunesEPlSPlaying ){
         [GrowlApplicationBridge notifyWithTitle:[currentTrack name]
