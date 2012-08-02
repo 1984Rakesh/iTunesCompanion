@@ -11,7 +11,6 @@
 #import "PlayerView.h"
 
 @interface PlayerViewController : NSViewController <GrowlApplicationBridgeDelegate> {
-    
 }
 
 

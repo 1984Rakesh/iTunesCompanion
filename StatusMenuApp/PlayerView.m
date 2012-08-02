@@ -44,11 +44,12 @@
         
         if( state == iTunesEPlSPlaying ) {
             [playPauseButton setTitle:@"Pause"];
-            
         }
-        if( state == iTunesEPlSPaused ) [playPauseButton setTitle:@"Play"];
-        
-        
+        else {
+            if( state == iTunesEPlSPaused ) {
+                [playPauseButton setTitle:@"Play"];
+            }
+        }       
     }
     else {
         if( state == iTunesEPlSStopped ){
@@ -78,7 +79,7 @@
 - (void) setTime:(NSInteger)time toLable:(NSTextField *)textField {
     NSInteger minsRemaining = time / 60;
     NSInteger secReamining = abs(time % 60);
-    [textField setStringValue:[NSString stringWithFormat:TIME_DISPLAY_FORMAT,minsRemaining,secReamining]];
+    [textField setStringValue:[NSString stringWithFormat:TIME_DISPLAY_FORMAT,(int)minsRemaining,(int)secReamining]];
 }
 
 - (NSImage *) placeHolderArtWork {

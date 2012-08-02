@@ -40,7 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		14A0250815494393001FEE80 /* StatusMenuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatusMenuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A0250815494393001FEE80 /* iTunesCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A0250C15494393001FEE80 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		14A0250F15494393001FEE80 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		14A0251015494393001FEE80 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -98,7 +98,7 @@
 		14A0250915494393001FEE80 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				14A0250815494393001FEE80 /* StatusMenuApp.app */,
+				14A0250815494393001FEE80 /* iTunesCompanion.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +129,7 @@
 		14A0251215494393001FEE80 /* StatusMenuApp */ = {
 			isa = PBXGroup;
 			children = (
+				18BD1C8D158DC5D200722E61 /* Resources */,
 				1808AF69155EA3CF00D9DAA1 /* iTunes.h */,
 				14A0251E15494393001FEE80 /* AppDelegate.h */,
 				14A0251F15494393001FEE80 /* AppDelegate.m */,
@@ -160,6 +161,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		18BD1C8D158DC5D200722E61 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				18BD1C8F158DC5DA00722E61 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		18BD1C8F158DC5DA00722E61 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -178,7 +194,7 @@
 			);
 			name = iTunesCompanion;
 			productName = StatusMenuApp;
-			productReference = 14A0250815494393001FEE80 /* StatusMenuApp.app */;
+			productReference = 14A0250815494393001FEE80 /* iTunesCompanion.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -187,7 +203,7 @@
 		14A024FF15494392001FEE80 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 14A0250215494392001FEE80 /* Build configuration list for PBXProject "StatusMenuApp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -313,6 +329,7 @@
 		14A0252715494393001FEE80 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -328,6 +345,7 @@
 		14A0252815494393001FEE80 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

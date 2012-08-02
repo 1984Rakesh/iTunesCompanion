@@ -24,7 +24,9 @@
     statusMenuItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     [statusMenuItem retain]; 
     
+//    [[statusMenuItem view] addSubview:statusBarView];
     [statusMenuItem setTitle:@"iTunes Helper"];
+    
     NSView *view = [playerViewController view];
     [[menu itemAtIndex:0] setView:view];
     [statusMenuItem setTarget:self];

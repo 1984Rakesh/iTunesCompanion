@@ -12,9 +12,9 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate,NSMenuDelegate> {
     NSStatusItem *statusMenuItem;
     IBOutlet PlayerViewController *playerViewController;
-    IBOutlet NSPopover *playerViewPopOver;
     IBOutlet StatusItemView *statusMenuItemView;
     IBOutlet NSMenu *menu;
+    IBOutlet NSView *statusBarView;
 }
 
 @property (assign) IBOutlet NSWindow *window;
