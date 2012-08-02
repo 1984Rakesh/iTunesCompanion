@@ -107,15 +107,10 @@ static iTunesManager *sharedManager;
         NSLog(@"%@",obj);
         Class iTunesBrowserWindowClass = NSClassFromString(@"ITunesBrowserWindow");
         if( [obj isKindOfClass:iTunesBrowserWindowClass] == YES ){
+            [(iTunesBrowserWindow *)obj setVisible:YES];
             [(iTunesBrowserWindow *)obj open];
-            [(iTunesBrowserWindow *)obj reveal];
-            *stop = YES;
         }
     }];
-    
-    if( [[self itunesApplication] isRunning] == YES ){
-        [[self currentTrack] reveal];
-    }
 }
 
 - (void) playpauseTrack {
@@ -138,7 +133,12 @@ static iTunesManager *sharedManager;
 #pragma mark -
 #pragma mark Private
 - (void) initState {
-    [self setState:[[self itunesApplication] playerState]];
+    if( [[self itunesApplication] isRunning] == YES ){
+        [self setState:[[self itunesApplication] playerState]];
+    }
+    else {
+        [self setState:iTunesEPlSStopped];        
+    }
 }
 
 - (void) startTimer {
